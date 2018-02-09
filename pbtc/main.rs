@@ -51,8 +51,7 @@ fn run() -> Result<(), String> {
 	let yaml = load_yaml!("cli.yml");
 	let matches = clap::App::from_yaml(yaml).get_matches();
 	let cfg = try!(config::parse(&matches));
-	println!("Config - #{:?}", &cfg);
-
+	
 	if !cfg.quiet {
 		if cfg!(windows) {
 			logs::init(LOG_INFO, logs::DateLogFormatter);

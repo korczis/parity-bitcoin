@@ -264,8 +264,6 @@ impl Context {
 		let server = try!(TcpListener::bind(&config.local_address, handle));
 		let server = Box::new(server.incoming()
 			.and_then(move |(stream, socket)| {
-				println!("Listening!");
-
 				// because we acquire atomic value twice,
 				// it may happen that accept slightly more connections than we need
 				// we don't mind
