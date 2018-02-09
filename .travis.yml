@@ -4,6 +4,7 @@ language: rust
 branches:
   only:
   - master
+  - rover
 matrix:
   fast_finish: false
   include:
