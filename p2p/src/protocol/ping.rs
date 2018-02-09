@@ -78,6 +78,7 @@ impl Protocol for PingProtocol {
 		self.state = State::WaitingTimeout(time::precise_time_s());
 		
 		if command == &Ping::command() {
+			println!("Received ping, sending pong...");
 			let ping: Ping = try!(deserialize_payload(payload, self.context.info().version));
 			let pong = Pong::new(ping.nonce);
 			self.context.send_response_inline(&pong);

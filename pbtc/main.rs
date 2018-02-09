@@ -51,6 +51,7 @@ fn run() -> Result<(), String> {
 	let yaml = load_yaml!("cli.yml");
 	let matches = clap::App::from_yaml(yaml).get_matches();
 	let cfg = try!(config::parse(&matches));
+	println!("Config - #{:?}", &cfg);
 
 	if !cfg.quiet {
 		if cfg!(windows) {
@@ -59,7 +60,7 @@ fn run() -> Result<(), String> {
 			logs::init(LOG_INFO, logs::DateAndColorLogFormatter);
 		}
 	} else {
-		env_logger::init().expect("Logger can be initialized only once");
+		env_logger::init();
 	}
 
 	match matches.subcommand() {

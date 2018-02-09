@@ -136,6 +136,8 @@ impl Context {
 
 					trace!("Creating {} more outbound connections", addresses.len());
 					for address in addresses {
+						// println!("Connecting to peer {:?}", &address);
+
 						Context::connect::<NormalSessionFactory>(context.clone(), address);
 					}
 				}
@@ -262,6 +264,8 @@ impl Context {
 		let server = try!(TcpListener::bind(&config.local_address, handle));
 		let server = Box::new(server.incoming()
 			.and_then(move |(stream, socket)| {
+				println!("Listening!");
+
 				// because we acquire atomic value twice,
 				// it may happen that accept slightly more connections than we need
 				// we don't mind
@@ -280,9 +284,13 @@ impl Context {
 
 	/// Called on incomming mesage.
 	pub fn on_message(context: Arc<Context>, channel: Arc<Channel>) -> IoFuture<MessageResult<()>> {
+
 		Box::new(channel.read_message().then(move |result| {
 			match result {
 				Ok(Ok((command, payload))) => {
+					// println!("[{:?}] - Received {}, {:?}", &channel.peer_info().address, &command, &payload);
+					// println!("[{:?}] - on_message() - #{}", &channel.peer_info().address, &command);
+
 					// successful read
 					trace!("Received {} message from {}", command, channel.peer_info().address);
 					// handle message and read the next one
@@ -317,6 +325,8 @@ impl Context {
 
 	/// Send message to a channel with given peer id.
 	pub fn send_to_peer<T>(context: Arc<Context>, peer: PeerId, payload: &T, serialization_flags: u32) -> IoFuture<()> where T: Payload {
+        // println!("send_to_peer(), peer #{:?}", &peer);
+
 		match context.connections.channel(peer) {
 			Some(channel) => {
 				let info = channel.peer_info();
@@ -333,6 +343,8 @@ impl Context {
 	}
 
 	pub fn send_message_to_peer<T>(context: Arc<Context>, peer: PeerId, message: T) -> IoFuture<()> where T: AsRef<[u8]> + Send + 'static {
+		// println!("send_message_to_peer(), peer #{:?}", &peer);
+
 		match context.connections.channel(peer) {
 			Some(channel) => Context::send(context, channel, message),
 			None => {

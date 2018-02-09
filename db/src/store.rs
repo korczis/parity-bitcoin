@@ -1,11 +1,13 @@
+use std::fmt;
 use std::sync::Arc;
 use chain::BlockHeader;
+
 use {
 	BestBlock, BlockProvider, BlockHeaderProvider, TransactionProvider, TransactionMetaProvider,
 	TransactionOutputProvider, BlockChain, IndexedBlockProvider, Forkable, Error
 };
 
-pub trait CanonStore: Store + Forkable + ConfigStore {
+pub trait CanonStore: Store + Forkable + ConfigStore + fmt::Debug {
 	fn as_store(&self) -> &Store;
 }
 

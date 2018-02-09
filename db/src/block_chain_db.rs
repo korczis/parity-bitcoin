@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::fs;
+use std::{fmt, fs};
 use std::path::Path;
 use parking_lot::RwLock;
 use hash::H256;
@@ -34,6 +34,12 @@ const MAX_FORK_ROUTE_PRESET: usize = 2048;
 pub struct BlockChainDatabase<T> where T: KeyValueDatabase {
 	best_block: RwLock<BestBlock>,
 	db: T,
+}
+
+impl<'a, T> fmt::Debug for BlockChainDatabase<T> where T: KeyValueDatabase {
+	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+		write!(f, "BlockChainDatabase {{}}")
+	}
 }
 
 pub struct ForkChainDatabase<'a, T> where T: 'a + KeyValueDatabase {

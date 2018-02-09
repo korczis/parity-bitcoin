@@ -1,3 +1,4 @@
+use std::fmt;
 use std::collections::HashMap;
 use parking_lot::RwLock;
 use chain::{IndexedBlock, IndexedTransaction};
@@ -39,7 +40,7 @@ pub struct MerkleBlockArtefacts {
 }
 
 /// Connected peers
-pub trait Peers : Send + Sync + PeersContainer + PeersFilters + PeersOptions {
+pub trait Peers : Send + Sync + PeersContainer + PeersFilters + PeersOptions + fmt::Debug {
 	/// Require peers services.
 	fn require_peer_services(&self, services: Services);
 	/// Get peer connection
@@ -108,8 +109,14 @@ struct Peer {
 	pub transaction_announcement_type: TransactionAnnouncementType,
 }
 
+impl fmt::Debug for Peer {
+	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+		write!(f, "Peer {{}}")
+	}
+}
+
 /// Default implementation of connectd peers container
-#[derive(Default)]
+#[derive(Debug, Default)]
 pub struct PeersImpl {
 	/// All connected peers. Most of times this field is accessed, it is accessed in read mode.
 	/// So this lock shouldn't be a performance problem.

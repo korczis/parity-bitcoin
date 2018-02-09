@@ -113,6 +113,7 @@ pub use work::{work_required, is_valid_proof_of_work, is_valid_proof_of_work_has
 pub use deployments::Deployments;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
+
 /// Blocks verification level.
 pub enum VerificationLevel {
 	/// Full verification.

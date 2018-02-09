@@ -1,0 +1,15 @@
+[package]
+name = "rover"
+version = "0.1.0"
+authors = ["Tomas Korcak <korczis@gmail.com>"]
+
+[dependencies]
+
+chain = { path = "../chain" }
+db = { path = "../db" }
+logs = { path = "../logs" }
+message = { path = "../message" }
+network = { path = "../network" }
+p2p = { path = "../p2p" }
+sync = { path = "../sync" }
+verification = { path = "../verification" }

@@ -118,6 +118,7 @@ pub fn start(cfg: config::Config) -> Result<(), String> {
 	}
 
 	let p2p = try!(p2p::P2P::new(p2p_cfg, sync_connection_factory, el.handle()).map_err(|x| x.to_string()));
+
 	let rpc_deps = rpc::Dependencies {
 		network: cfg.network,
 		storage: cfg.db,

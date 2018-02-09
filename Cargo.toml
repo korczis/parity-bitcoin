@@ -6,8 +6,8 @@ authors = ["Parity Technologies <admin@parity.io>"]
 description = "Parity bitcoin client."
 
 [dependencies]
-log = "0.3"
-env_logger = "0.4"
+log = "0.4"
+env_logger = "0.5"
 app_dirs = "^1.1.1"
 libc = "0.2"
 clap = { version = "2", features = ["yaml"] }
@@ -23,6 +23,7 @@ verification = { path = "verification" }
 sync = { path = "sync" }
 import = { path = "import" }
 logs = { path = "logs" }
+rover = { path = "rover" }
 rpc = { path = "rpc" }
 primitives = { path = "primitives" }
 

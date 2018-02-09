@@ -13,6 +13,7 @@ use verification::VerificationLevel;
 use sync::VerificationParameters;
 use util::open_db;
 
+#[derive(Debug)]
 pub struct Config {
 	pub network: Network,
 	pub consensus: ConsensusParams,
