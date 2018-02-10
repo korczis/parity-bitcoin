@@ -29,7 +29,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "app_dirs"
 version = "1.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/korczis/app-dirs-rs.git#f00ebd1b90c653c79861b1b69153782d700a2d02"
 dependencies = [
  "ole32-sys 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "shell32-sys 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -801,7 +801,7 @@ dependencies = [
 name = "pbtc"
 version = "0.1.0"
 dependencies = [
- "app_dirs 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "app_dirs 1.1.1 (git+https://github.com/korczis/app-dirs-rs.git)",
  "chain 0.1.0",
  "clap 2.29.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "db 0.1.0",
@@ -1484,7 +1484,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum aho-corasick 0.6.4 (registry+https://github.com/rust-lang/crates.io-index)" = "d6531d44de723825aa81398a6415283229725a00fa30713812ab9323faa82fc4"
 "checksum ansi_term 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6b3568b48b7cefa6b8ce125f9bb4989e52fbcc29ebea88df04cc7c5f12f70455"
 "checksum ansi_term 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "23ac7c30002a5accbf7e8987d0632fa6de155b7c3d39d0067317a391e00a2ef6"
-"checksum app_dirs 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b7d1c0d48a81bbb13043847f957971f4d87c81542d80ece5e84ba3cba4058fd4"
+"checksum app_dirs 1.1.1 (git+https://github.com/korczis/app-dirs-rs.git)" = "<none>"
 "checksum arrayvec 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)" = "a1e964f9e24d588183fcb43503abda40d288c8657dfc27311516ce2f05675aef"
 "checksum atty 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = "8352656fd42c30a0c3c89d26dea01e3b77c0ab2af18230835c15e2e13cd51859"
 "checksum base58 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "5024ee8015f02155eee35c711107ddd9a9bf3cb689cf2a9089c97e79b6e1ae83"
