@@ -12,6 +12,7 @@ cargo test\
 	-p pbtc\
 	-p p2p\
 	-p primitives\
+	-p rover\
 	-p rpc\
 	-p script\
 	-p serialization\
